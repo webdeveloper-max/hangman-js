@@ -1,15 +1,6 @@
-/**
-* Hangman in Vanilla Javascript
-* @see https://github.com/jelofsson/hangman-js
-* @author jelofsson
-**/
+
 var Hangman = (function () {
     'use strict';
-
-    /**
-     * Constructor
-     * @param {string} elId An ID used in this class and when rendering the DOM Elements
-     */
     function Hangman(elId) {
         // DOM is ready
         this.elId       = elId;
@@ -20,9 +11,7 @@ var Hangman = (function () {
         ];
     }
 
-    /**
-     * Resets the hangman game
-     */
+   
     Hangman.prototype.reset = function () {
         // Variables
         this.STOPPED        = false;
@@ -35,12 +24,6 @@ var Hangman = (function () {
         this.showElementByIdWithContent(this.elId + "_guessbox", null);
         this.showElementByIdWithContent(this.elId + "_word", this.getGuessedfWord());
     };
-
-    /**
-     * Logic after the user guessed on a letter
-     *
-     * @param {char} letter A letter guessed by our enduser
-     */
     Hangman.prototype.guess = function (letter) {
         letter = letter.charAt(0).toUpperCase();
 
@@ -74,12 +57,7 @@ var Hangman = (function () {
         }
     };
 
-    /**
-     * Displays HTML element by id with the following content
-     *
-     * @param {string} elId     DOM ID
-     * @param {HTML} content 
-     */
+    
     Hangman.prototype.showElementByIdWithContent = function (elId, content) {
         if (content !== null) {
             document.getElementById(elId).innerHTML = content;
@@ -87,11 +65,7 @@ var Hangman = (function () {
         document.getElementById(elId).style.opacity = 1;
     };
 
-    /**
-     * Hides element by class
-     *
-     * @param {string} elClass DOM class
-     */
+    
     Hangman.prototype.hideElementByClass = function (elClass) {
         var elements = document.getElementsByClassName(elClass), i;
         for (i = 0; i < elements.length; i++) {
@@ -99,9 +73,7 @@ var Hangman = (function () {
         }
     };
 
-    /**
-     * The word but only with letters the user has guessed so far is visible
-     */
+    
     Hangman.prototype.getGuessedfWord = function () {
         var result = "", i;
         for (i = 0; i < this.WORD.length; i++) {
@@ -112,6 +84,6 @@ var Hangman = (function () {
         return result;
     };
 
-    // Create and return an instance of this class, its go time!
+    
     return new Hangman('hangm');    
 }());
